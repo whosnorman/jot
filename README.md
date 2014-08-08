@@ -3,10 +3,18 @@ Jot
 
 Quick note taking bookmark.
 
-Instructions:
+Instructions
 =======
-Copy all text from jot.txt and paste into the URL box, then proceed to bookmark and rename.
+Copy all text from jot.html and paste into the URL box, then proceed to bookmark and rename.
 
-Idea from [this snippet repo](http://snippetrepo.com/snippets/one-line-browser-notepad)
 
-Momentum images from [this imgur album](http://imgur.com/a/MBJlE). Couldn't use imgur API due to XHR not working in 'one-line' bookmark.
+Idea from [this Snippet Repo](http://snippetrepo.com/snippets/one-line-browser-notepad)
+
+Background images from [this imgur album](http://imgur.com/a/MBJlE) full of pictures from the Momentum Chrome Extenstion.
+- Couldn't use imgur API due to XHR not working in 'one-line' bookmark.
+- will be weeding out non optomized images
+
+
+to add
+- local storage
+- basic j logo

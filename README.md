@@ -1,7 +1,7 @@
 Jot
 ===
 
-Quick note taking [bookmark.](javascript:bookmark('http://google.com',"google";))
+Quick note taking [bookmark.](javascript:alert('hello'\);)
 
 Instructions
 =======

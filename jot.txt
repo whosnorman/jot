@@ -1,0 +1,73 @@
+data:text/html, 
+<html>
+<head>
+	<link href='http://fonts.googleapis.com/css?family=Lato:100,400,700,900' rel='stylesheet' type='text/css'>
+	<title>Jot</title>
+	<style type="text/css">
+		html { 
+		  -webkit-background-size: cover;
+		  -moz-background-size: cover;
+		  -o-background-size: cover;
+		  background-size: cover;
+		  background-repeat: no-repeat;
+		  background-position: center center;
+		}
+		body {
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: 12px;
+			border: 12px solid #fff;
+		}
+		.m { font-family: 'Lato', sans-serif; font-weight: 100; outline:none; color: #fff;list-style-type:circle;-webkit-transition: all linear 5s; text-shadow: 0px 1px 5px rgba(0,0,0,0.2); height: 70%; padding: 0 0 0 70px;overflow:auto; margin: 3.5rem 0 0 0;}
+		.m li:hover {list-style-type:disc;}
+		.h { font-family: 'Lato', sans-serif; font-size: 5rem; font-weight: 900; color: #fff;position:relative; width:150px;}
+		.b { float: right; position: relative; background:none;border:5px solid #fff;margin-top:20px;color:#fff;font-family: 'Lato', sans-serif; font-size: 3rem; font-weight: 900;padding:0px 10px 0px 10px;} 
+		.b:hover {cursor:pointer;background-color: rgba(255,255,255,0.3);}
+		.c {font-size:4rem;line-height:1.3;max-width:62rem;margin:0 auto;padding:2rem 2rem 0 2rem;}
+		.a {width:100%;height:100%;background-color:rgba(0,0,0,0.3);}
+
+		::-webkit-scrollbar {
+		    width: 12px;
+		}
+		 
+		::-webkit-scrollbar-track {
+		    background-color: rgba(255, 255, 255, 0.1); 
+		    border-radius: 0px;
+		}
+		 
+		::-webkit-scrollbar-thumb {
+		    border-radius: 0px;
+		    background-color: #fff;
+		}
+	</style>
+<script> 
+window.onload=function(){
+	var m=document.getElementById("m");
+	m.focus();
+	var n=Math.floor((Math.random() * 50) + 1);
+	document.body.style.backgroundImage="url('https://raw.githubusercontent.com/mattohagan/jot/master/bg/"+n+".jpg')";
+	var b=document.getElementById("b");
+	b.addEventListener("click", function(){
+		var arr = m.getElementsByTagName("li");
+		console.log(arr);
+		for(var lcv=arr.length - 1; lcv >= 0; lcv--){
+			if(lcv===0)
+				arr[lcv].innerHTML='';
+			else
+				arr[lcv].parentNode.removeChild(arr[lcv]);
+		}
+		m.focus();
+	});
+}
+</script>
+</head>
+<body>
+	<div class="a"><div class="c">
+		<div style="margin: 0 0 1rem 1rem;overflow:auto;">
+			<div class="b" id="b">Clear</div>
+			<div class="h">Jot</div>
+		</div>
+		<ul contenteditable class="m" id='m'><li></li></ul>
+	</div></div></body></html>

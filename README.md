@@ -1,11 +1,7 @@
 Jot
 ===
 
-<<<<<<< HEAD
-Quick note taking bookmark. Copy once and it's there when you need it. 
-=======
-Quick note taking [bookmark.](javascript:alert\('hello'\))
->>>>>>> 5432c92fef21c98571bb713bf042dff52c227e3e
+Quick note taking bookmark.
 
 Instructions
 =======

@@ -1,7 +1,7 @@
 Jot
 ===
 
-Quick note taking bookmark.
+Quick note taking [bookmark.](<script type='text/javascript'>console.log("maybe?")</script>)
 
 Instructions
 =======

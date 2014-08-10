@@ -1,4 +1,4 @@
-data:text/html, 
+<!--data:text/html, -->
 <html>
 <head>
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,400,700,900' rel='stylesheet' type='text/css'>
@@ -44,10 +44,54 @@ data:text/html,
 	</style>
 <script> 
 window.onload=function(){
+	//localStorage.removeItem('store');
+	var storage;
+	var stor;
+
+	if (localStorage && localStorage.getItem('store')) {
+		console.log(localStorage.getItem('store'));
+		storage = JSON.parse(localStorage.getItem('store'));
+		stor = true;
+	}
+	else
+		storage = {};
+	
 	var m=document.getElementById("m");
+
+	if (stor) {
+		//var arr = m.getElementsByTagName("li");
+		var arr = m.getElementsByTagName("li");
+		arr[0].parentNode.removeChild(arr[0]);
+		var length = Object.keys(storage).length;
+		for(var i=0; i < length; i++) {
+			console.log(i + '' + length);
+			var li = document.createElement("li");
+			li.appendChild(document.createTextNode(storage[i]));
+			m.appendChild(li);
+			console.log(storage[i]);
+		}
+	}
+
 	m.focus();
+
+	// set local storage
+	m.addEventListener("keyup", function(){
+		var arr = m.getElementsByTagName("li");
+		for(var i=0; i < arr.length; i++) {
+			var text = arr[i].innerHTML;
+			//console.log(text);
+			if (text != "<br>") {
+				storage[i] = arr[i].innerHTML;
+			}
+		}
+		localStorage.setItem('store', JSON.stringify(storage));
+	});
+
+	// set background
 	var n=Math.floor((Math.random() * 50) + 1);
 	document.body.style.backgroundImage="url('https://raw.githubusercontent.com/mattohagan/jot/master/bg/"+n+".jpg')";
+
+	// clear button
 	var b=document.getElementById("b");
 	b.addEventListener("click", function(){
 		var arr = m.getElementsByTagName("li");
@@ -59,6 +103,9 @@ window.onload=function(){
 				arr[lcv].parentNode.removeChild(arr[lcv]);
 		}
 		m.focus();
+		//console.log(localStorage.getItem('store'));
+		localStorage.removeItem('store');
+		//console.log(localStorage.getItem('store'));
 	});
 }
 </script>

@@ -1,4 +1,4 @@
-data:text/html,
+<!-- data:text/html, -->
 <html>
 <head>
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,400,700,900' rel='stylesheet' type='text/css'>
@@ -41,20 +41,25 @@ data:text/html,
 		    border-radius: 0px;
 		    background-color: #fff;
 		}
+
+		::selection {
+			background: #E6C2B3;
+		}
+		::-moz-selection {
+			background: #E6C2B3;
+		}
 	</style>
 <script> 
 window.onload=function(){
-	//localStorage.removeItem('store');
-	var storage;
+	var storage = {};
 	var stor;
+	var timer;
 
-	if (localStorage && localStorage.getItem('store')) {
-		console.log(localStorage.getItem('store'));
-		storage = JSON.parse(localStorage.getItem('store'));
+	if (localStorage && localStorage.getItem('list')) {
+		console.log(localStorage.getItem('list'));
+		storage = JSON.parse(localStorage.getItem('list'));
 		stor = true;
 	}
-	else
-		storage = {};
 	
 	var m=document.getElementById("m");
 
@@ -76,16 +81,30 @@ window.onload=function(){
 
 	// set local storage
 	m.addEventListener("keyup", function(){
-		var arr = m.getElementsByTagName("li");
-		for(var i=0; i < arr.length; i++) {
-			var text = arr[i].innerHTML;
-			//console.log(text);
-			if (text != "<br>") {
-				storage[i] = arr[i].innerHTML;
+		resetTimer();
+	});
+
+	function resetTimer() {
+		clearTimeout(timer);
+		console.log("boom");
+		timer = setTimeout(setStorage, 500);
+	}
+
+	function setStorage() {
+		var i, j;
+		var array = m.getElementsByTagName("li");
+		storage = {};
+		for(i=0, j=0; i < array.length; i++) {
+			var text = array[i].innerText;
+			if (text != '\n') {
+				storage[j] = text;
+				j++;
 			}
 		}
-		localStorage.setItem('store', JSON.stringify(storage));
-	});
+
+		localStorage.setItem('list', JSON.stringify(storage));
+		console.log(localStorage.getItem('list'));
+	}
 
 	// set background
 	var n=Math.floor((Math.random() * 50) + 1);
@@ -103,9 +122,9 @@ window.onload=function(){
 				arr[lcv].parentNode.removeChild(arr[lcv]);
 		}
 		m.focus();
-		//console.log(localStorage.getItem('store'));
-		localStorage.removeItem('store');
-		//console.log(localStorage.getItem('store'));
+		//console.log(localStorage.getItem('list'));
+		localStorage.removeItem('list');
+		console.log(localStorage.getItem('list'));
 	});
 }
 </script>

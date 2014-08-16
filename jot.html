@@ -1,4 +1,4 @@
-<!-- data:text/html, -->
+data:text/html,
 <html>
 <head>
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,400,700,900' rel='stylesheet' type='text/css'>
@@ -23,7 +23,7 @@
 		.m { font-family: 'Lato', sans-serif; font-weight: 100; outline:none; color: #fff;list-style-type:circle;-webkit-transition: all linear 5s; text-shadow: 0px 1px 5px rgba(0,0,0,0.2); height: 70%; padding: 0 0 0 70px;overflow:auto; margin: 3.5rem 0 0 0;}
 		.m li:hover {list-style-type:disc;}
 		.h { font-family: 'Lato', sans-serif; font-size: 5rem; font-weight: 900; color: #fff;position:relative; width:150px;}
-		.b { float: right; position: relative; background:none;border:5px solid #fff;margin-top:20px;color:#fff;font-family: 'Lato', sans-serif; font-size: 3rem; font-weight: 900;padding:0px 10px 0px 10px;} 
+		.b { float: right; position: relative; background:none;border:5px solid #fff;margin-top:20px;color:#fff;font-family: 'Lato', sans-serif; font-size: 3rem; font-weight: 900; padding:0px 10px 0px 10px;} 
 		.b:hover {cursor:pointer;background-color: rgba(255,255,255,0.3);}
 		.c {font-size:4rem;line-height:1.3;max-width:62rem;margin:0 auto;padding:2rem 2rem 0 2rem;}
 		.a {width:100%;height:100%;background-color:rgba(0,0,0,0.3);}
@@ -48,32 +48,31 @@
 		::-moz-selection {
 			background: #E6C2B3;
 		}
+
 	</style>
+	<script> console.log('wtf');</script>
 <script> 
+
 window.onload=function(){
 	var storage = {};
 	var stor;
 	var timer;
+	var m=document.getElementById("m");
 
 	if (localStorage && localStorage.getItem('list')) {
-		console.log(localStorage.getItem('list'));
+		//console.log(localStorage.getItem('list'));
 		storage = JSON.parse(localStorage.getItem('list'));
 		stor = true;
 	}
-	
-	var m=document.getElementById("m");
 
 	if (stor) {
-		//var arr = m.getElementsByTagName("li");
 		var arr = m.getElementsByTagName("li");
 		arr[0].parentNode.removeChild(arr[0]);
 		var length = Object.keys(storage).length;
 		for(var i=0; i < length; i++) {
-			console.log(i + '' + length);
 			var li = document.createElement("li");
 			li.appendChild(document.createTextNode(storage[i]));
 			m.appendChild(li);
-			console.log(storage[i]);
 		}
 	}
 
@@ -82,21 +81,21 @@ window.onload=function(){
 	// set local storage
 	m.addEventListener("keyup", function(){
 		resetTimer();
-	});
+	}); 
 
-	function resetTimer() {
+	function resetTimer(){
 		clearTimeout(timer);
 		console.log("boom");
 		timer = setTimeout(setStorage, 500);
 	}
 
-	function setStorage() {
+	function setStorage(){
 		var i, j;
 		var array = m.getElementsByTagName("li");
 		storage = {};
 		for(i=0, j=0; i < array.length; i++) {
 			var text = array[i].innerText;
-			if (text != '\n') {
+			if (text != "\n"){
 				storage[j] = text;
 				j++;
 			}
@@ -124,9 +123,9 @@ window.onload=function(){
 		m.focus();
 		//console.log(localStorage.getItem('list'));
 		localStorage.removeItem('list');
-		console.log(localStorage.getItem('list'));
 	});
 }
+
 </script>
 </head>
 <body>

@@ -20,10 +20,10 @@ data:text/html,
 			margin: 12px;
 			border: 12px solid #fff;
 		}
-		.m { font-family: 'Lato', sans-serif; font-weight: 100; outline:none; color: #fff;list-style-type:circle;-webkit-transition: all linear 5s; text-shadow: 0px 1px 5px rgba(0,0,0,0.2); height: 70%; padding: 0 0 0 70px;overflow:auto; margin: 3.5rem 0 0 0;}
+		.m { font-family: 'Lato', sans-serif; font-weight: 100; outline:none; color: #fff; list-style-type:circle;-webkit-transition: all linear 5s; text-shadow: 0px 1px 5px rgba(0,0,0,0.2); height: 70%; padding: 0 0 0 70px;overflow:auto; margin: 3.5rem 0 0 0;}
 		.m li:hover {list-style-type:disc;}
-		.h { font-family: 'Lato', sans-serif; font-size: 5rem; font-weight: 900; color: #fff;position:relative; width:150px;}
-		.b { float: right; position: relative; background:none;border:5px solid #fff;margin-top:20px;color:#fff;font-family: 'Lato', sans-serif; font-size: 3rem; font-weight: 900; padding:0px 10px 0px 10px;} 
+		.h { font-family: 'Lato', sans-serif; font-size: 5rem; font-weight: 900; color: #fff; position:relative; width:150px;}
+		.b { float: right; position: relative; background:none;border:5px solid #fff; margin-top:20px;color:#fff;font-family: 'Lato', sans-serif; font-size: 3rem; font-weight: 900; padding:0px 10px 0px 10px;} 
 		.b:hover {cursor:pointer;background-color: rgba(255,255,255,0.3);}
 		.c {font-size:4rem;line-height:1.3;max-width:62rem;margin:0 auto;padding:2rem 2rem 0 2rem;}
 		.a {width:100%;height:100%;background-color:rgba(0,0,0,0.3);}
@@ -50,9 +50,8 @@ data:text/html,
 		}
 
 	</style>
-	<script> console.log('wtf');</script>
+	<script> console.log('jot');</script>
 <script> 
-
 window.onload=function(){
 	var storage = {};
 	var stor;
@@ -60,12 +59,8 @@ window.onload=function(){
 	var m=document.getElementById("m");
 
 	if (localStorage && localStorage.getItem('list')) {
-		//console.log(localStorage.getItem('list'));
 		storage = JSON.parse(localStorage.getItem('list'));
-		stor = true;
-	}
 
-	if (stor) {
 		var arr = m.getElementsByTagName("li");
 		arr[0].parentNode.removeChild(arr[0]);
 		var length = Object.keys(storage).length;
@@ -76,18 +71,21 @@ window.onload=function(){
 		}
 	}
 
+
 	m.focus();
 
-	// set local storage
 	m.addEventListener("keyup", function(){
 		resetTimer();
 	}); 
+
+
 
 	function resetTimer(){
 		clearTimeout(timer);
 		console.log("boom");
 		timer = setTimeout(setStorage, 500);
 	}
+
 
 	function setStorage(){
 		var i, j;
@@ -105,11 +103,10 @@ window.onload=function(){
 		console.log(localStorage.getItem('list'));
 	}
 
-	// set background
+
 	var n=Math.floor((Math.random() * 50) + 1);
 	document.body.style.backgroundImage="url('https://raw.githubusercontent.com/mattohagan/jot/master/bg/"+n+".jpg')";
 
-	// clear button
 	var b=document.getElementById("b");
 	b.addEventListener("click", function(){
 		var arr = m.getElementsByTagName("li");
@@ -121,9 +118,9 @@ window.onload=function(){
 				arr[lcv].parentNode.removeChild(arr[lcv]);
 		}
 		m.focus();
-		//console.log(localStorage.getItem('list'));
 		localStorage.removeItem('list');
 	});
+
 }
 
 </script>

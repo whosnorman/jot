@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+
+  "name": "Jot",
+  "description": "This extension replaces the new tab page for note taking.",
+  "version": "0.1",
+
+  "chrome_url_overrides": {
+    "newtab": "jot.html"
+  },
+  "icons": {
+  	"16": "icon16.png",
+  	"128": "icon2.png"
+  }
+}

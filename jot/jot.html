@@ -1,8 +1,6 @@
-data:text/html,
 <html>
 <head>
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,400,700,900' rel='stylesheet' type='text/css'>
-	<title>Jot</title>
 	<style type="text/css">
 		html { 
 		  -webkit-background-size: cover;
@@ -50,80 +48,7 @@ data:text/html,
 		}
 
 	</style>
-	<script> console.log('jot');</script>
-<script> 
-window.onload=function(){
-	var storage = {};
-	var stor;
-	var timer;
-	var m=document.getElementById("m");
-
-	if (localStorage && localStorage.getItem('list')) {
-		storage = JSON.parse(localStorage.getItem('list'));
-
-		var arr = m.getElementsByTagName("li");
-		arr[0].parentNode.removeChild(arr[0]);
-		var length = Object.keys(storage).length;
-		for(var i=0; i < length; i++) {
-			var li = document.createElement("li");
-			li.appendChild(document.createTextNode(storage[i]));
-			m.appendChild(li);
-		}
-	}
-
-
-	m.focus();
-
-	m.addEventListener("keyup", function(){
-		resetTimer();
-	}); 
-
-
-
-	function resetTimer(){
-		clearTimeout(timer);
-		console.log("boom");
-		timer = setTimeout(setStorage, 500);
-	}
-
-
-	function setStorage(){
-		var i, j;
-		var array = m.getElementsByTagName("li");
-		storage = {};
-		for(i=0, j=0; i < array.length; i++) {
-			var text = array[i].innerText;
-			if (text != "\n"){
-				storage[j] = text;
-				j++;
-			}
-		}
-
-		localStorage.setItem('list', JSON.stringify(storage));
-		console.log(localStorage.getItem('list'));
-	}
-
-
-	var n=Math.floor((Math.random() * 50) + 1);
-	document.body.style.backgroundImage="url('https://raw.githubusercontent.com/mattohagan/jot/master/bg/"+n+".jpg')";
-
-	var b=document.getElementById("b");
-	b.addEventListener("click", function(){
-		var arr = m.getElementsByTagName("li");
-		console.log(arr);
-		for(var lcv=arr.length - 1; lcv >= 0; lcv--){
-			if(lcv===0)
-				arr[lcv].innerHTML='';
-			else
-				arr[lcv].parentNode.removeChild(arr[lcv]);
-		}
-		m.focus();
-		localStorage.removeItem('list');
-	});
-
-}
-
-</script>
+<script type="text/javascript" src="jot.js"> </script>
 </head>
 <body>
 	<div class="a"><div class="c">

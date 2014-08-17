@@ -2,8 +2,8 @@ window.onload=function(){
 	var storage = {};
 	var stor;
 	var timer;
-	var m=document.getElementById("m");
-	var b=document.getElementById("b");
+	var m=document.getElementById("input");
+	var b=document.getElementById("clear");
 
 	if (localStorage && localStorage.getItem('list')) {
 		storage = JSON.parse(localStorage.getItem('list'));
@@ -25,13 +25,11 @@ window.onload=function(){
 	// clear & reset storage set timer
 	function resetTimer(){
 		clearTimeout(timer);
-		console.log('boom');
 		timer = setTimeout(setStorage, 250);
 	}
 
-	// go through each line and add it to the storage
+	// loop through each line and add it to the storage
 	function setStorage(){
-		console.log('clap');
 		var array = m.getElementsByTagName("li");
 		storage = {};
 		for(var i=0, j=0; i < array.length; i++) {
@@ -47,7 +45,8 @@ window.onload=function(){
 
 	// set background
 	var n=Math.floor((Math.random() * 50) + 1);
-	document.body.style.backgroundImage="url('https://raw.githubusercontent.com/mattohagan/jot/master/bg/"+n+".jpg')";
+	//document.body.style.backgroundImage="url('https://raw.githubusercontent.com/mattohagan/jot/master/bg/"+n+".jpg')";
+	document.body.style.backgroundImage="bg/"+n+".jpg";
 
 	// clear button
 	b.addEventListener("click", function(){

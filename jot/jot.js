@@ -45,8 +45,7 @@ window.onload=function(){
 
 	// set background
 	var n=Math.floor((Math.random() * 50) + 1);
-	//document.body.style.backgroundImage="url('https://raw.githubusercontent.com/mattohagan/jot/master/bg/"+n+".jpg')";
-	document.body.style.backgroundImage="bg/"+n+".jpg";
+	document.body.style.backgroundImage = "url('bg/"+n+".jpg')";
 
 	// clear button
 	b.addEventListener("click", function(){

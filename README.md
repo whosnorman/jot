@@ -2,11 +2,8 @@ Jot
 ===
 Quick note taking chrome extenstion to replace the new tab page.
 
-
-Instructions
-=======
 [Install]() the extenstion.
 
-[Add]() your own images to use.
+Submit a pull request to add more images for the next release.
 
 

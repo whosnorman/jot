@@ -1,9 +1,10 @@
 Jot
 ===
-Quick note taking chrome extenstion to replace the new tab page.
+Quick note taking chrome extension to replace the new tab page.
 
 [Install]() the extenstion.
 
-Submit a pull request to add more images for the next release.
+Submit a pull request to add more [images](https://github.com/mattohagan/jot/tree/master/jot/bg) for the next release.
+
 
 

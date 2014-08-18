@@ -8,67 +8,76 @@ window.onload=function(){
 
 
 	storage = {
-		"0": "test 1", 
-		"1": "test 2"
+		"0": "youtu.be/link", 
+		"1": "#hexcode"
 	}
 	localStorage.setItem('list', JSON.stringify(storage));
 
-	if (localStorage && localStorage.getItem('list')) {
+	// find storage or set to nothing in order to render
+	if (localStorage && localStorage.getItem('list'))
 		storage = JSON.parse(localStorage.getItem('list'));
-
-		var arr = divCont.getElementsByTagName("div");
-		arr[0].parentNode.removeChild(arr[0]);
-		var length = Object.keys(storage).length; 
-
-		for(var i=0; i < length; i++) {
-			var div = document.createElement("div");
-			div.setAttribute("id", lineNum);
-
-			var btn = document.createElement("div");
-			btn.setAttribute("id", lineNum);
-			btn.setAttribute("class", "left");
-			btn.appendChild(document.createTextNode('||'));
-
-			var txt = document.createElement("div");
-			txt.setAttribute("id", lineNum);
-			txt.setAttribute("contentEditable", true);
-			txt.setAttribute("class", "txt");
-			txt.appendChild(document.createTextNode(storage[i]));
-
-			div.appendChild(btn);
-			div.appendChild(txt);
-			divCont.appendChild(div);
-
-			lineNum++;
-		}
-	}
 	else {
 		storage = {
 			"0": ""
 		}
 	}
 
-	divCont.addEventListener("keyup", function(){
-		console.log('boom');
-		resetTimer();
-	}); 
-	var btnArray = [];
-	var txtArray = [];
+	// remove original div in html
+	var arr = divCont.getElementsByTagName("div");
+	arr[0].parentNode.removeChild(arr[0]);
 
+	// loop through storage and render each line approriately
+	var length = Object.keys(storage).length; 
+	for(var i=0; i < length; i++) {
+		var div = document.createElement("div");
+		div.setAttribute("id", lineNum);
+
+		var btn = document.createElement("div");
+		btn.setAttribute("id", lineNum);
+		btn.setAttribute("class", "left");
+		btn.appendChild(document.createTextNode('||'));
+
+		var txt = document.createElement("div");
+		txt.setAttribute("id", lineNum);
+		txt.setAttribute("contentEditable", true);
+		txt.setAttribute("class", "txt");
+		txt.appendChild(document.createTextNode(storage[i]));
+
+		div.appendChild(btn);
+		div.appendChild(txt);
+		divCont.appendChild(div);
+
+		lineNum++;
+	}
+	
+
+	// returns ALL divs in the 'input' div
 	var divArray = divCont.getElementsByTagName("div");
-	console.log(divArray);
+
+	// creates new array without btns and txt to loop through
+	var containerArray = [];
 	var len = divArray.length / 3;
-	for(var i = 0; i < len; i++) {
-		var current = divArray[i * 3];
-		console.log(current);
-		var curr = current.getElementsByClassName('left')[0];
-		console.log(curr);
-		btnArray[i] = curr;
-		btnArray[i].addEventListener("click", function() {
-			txtArray[i] = current.getElementsByClassName('txt')[0];
-			txtArray[i].style.color = "#808080";
+	for(var i = 0; i < len; i++)
+		containerArray[i] = divArray[i * 3];
+
+	// set callbacks for button events
+	function setBtnListener (element, index, array) {
+		var curr = element.getElementsByClassName('left')[0];
+		var txt = element.getElementsByClassName('txt')[0];
+		curr.addEventListener("mouseover", function() {
+			txt.style.color = "rgba(255, 255, 255, 0.6)";
+			txt.style.textShadow = "0 0 0";
+		});
+		curr.addEventListener("mouseout", function() {
+			txt.style.color = "#fff";
+			txt.style.textShadow = "0px 1px 5px rgba(0,0,0,0.2)";
+		});
+		curr.addEventListener("click", function() {
+			txt.focus();
 		});
 	}
+
+	containerArray.forEach(setBtnListener);
 
 
 /*
@@ -79,6 +88,12 @@ window.onload=function(){
 		}
 	});
 */
+
+
+	// timer used so that storage isnt reloaded on every single keystroke
+	divCont.addEventListener("keyup", function(){
+		resetTimer();
+	}); 
 
 	// clear & reset storage set timer
 	function resetTimer(){

@@ -25,11 +25,19 @@ body {
 	padding: 0 0 0 70px;
 	overflow: auto; 
 	margin: 3.5rem 0 0 0;
-	list-style-type: circle;
 }
 
-.input li:hover {
-	list-style-type: disc;
+.input .left {
+	float: left;
+	cursor: pointer;
+}
+
+.input .left:hover {
+	color: #FF3535;
+}
+
+.input .txt {
+	margin-left: 70px;
 }
 
 .header { 

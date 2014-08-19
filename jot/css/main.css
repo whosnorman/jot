@@ -5,6 +5,8 @@ html {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  /*-webkit-filter: blur(2px);*/
+
 }
 
 body {
@@ -14,6 +16,10 @@ body {
 	bottom: 0;
 	margin: 12px;
 	border: 12px solid #fff;
+
+}
+.fontello {
+	font-family: fontello;
 }
 .input { 
 	font-family: 'Lato', sans-serif; 
@@ -30,15 +36,21 @@ body {
 .input .left {
 	float: left;
 	cursor: pointer;
+	margin-top: 1.3rem;
 }
 
 .input .left:hover {
-	color: #FF3535;
+	color: #E6C2B3;
 }
 
 .input .txt {
 	margin-left: 70px;
 	outline: none;
+}
+
+.input i {
+	text-shadow: none;
+	font-size: 3rem;
 }
 
 .header { 
@@ -47,7 +59,17 @@ body {
 	font-weight: 900; 
 	color: #fff; 
 	position: relative; 
-	width:150px;
+	max-width:500px;
+	margin-left: -50px;
+}
+
+.header i {
+	font-size: 4rem;
+}
+
+.header i:hover {
+	color: #E6C2B3;
+	cursor: pointer;
 }
 
 .button { 
@@ -78,7 +100,7 @@ body {
 .container {
 	width:100%;
 	height:100%;
-	background-color:rgba(0,0,0,0.3);
+	background-color:rgba(0,0,0,0.4);
 }
 
 ::-webkit-scrollbar {

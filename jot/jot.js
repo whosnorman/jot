@@ -75,7 +75,6 @@ window.onload=function(){
 	var len = divArray.length / 2;
 	for(var i = 0; i < len; i++)
 		containerArray[i] = divArray[i * 2];
-	console.log(containerArray);
 
 	// functions for button and text box features
 	function addBtnListener(btn, txt) {
@@ -218,12 +217,16 @@ window.onload=function(){
 	clearBtn.addEventListener("click", function(){
 		var arr = divCont.getElementsByTagName("div");
 		console.log(arr);
-		for(var lcv=arr.length - 1; lcv >= 0; lcv--){
-			if(lcv===0)
-				arr[lcv].innerHTML='';
+		// lcv = 5
+		// 
+		for(var lcv = arr.length - 1; lcv >= 1; lcv-=2){
+			if(lcv === 1){
+				var txt = arr[lcv].innerHTML='';
+			}
 			else
-				arr[lcv].parentNode.removeChild(arr[lcv]);
+				arr[lcv - 1].parentNode.removeChild(arr[lcv - 1]);
 		}
+
 		divCont.focus();
 		localStorage.removeItem('list');
 	});

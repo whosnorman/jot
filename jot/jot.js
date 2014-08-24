@@ -6,21 +6,24 @@ window.onload=function(){
 	var divCont = document.getElementById("input");
 	var clearBtn = document.getElementById("clear");
 
-	/* used for testing purposes
-	storage = {
-		"0": "youtu.be/link", 
-		"1": "#hexcode"
+	//used for testing purposes
+	/*storage = {
+		"0": ""
+		//"1": "#hexcode"
 	} 
 	localStorage.setItem('list', JSON.stringify(storage));
 	*/
 	
 
 	// find storage or set to nothing in order to render
-	if (localStorage && localStorage.getItem('list'))
+	if (localStorage && localStorage.getItem('list')) {
 		storage = JSON.parse(localStorage.getItem('list'));
+		 
+	}
 	else {
+		console.log("blah");
 		storage = {
-			"0": ""
+			"0": " "
 		}
 	}
 
@@ -78,6 +81,7 @@ window.onload=function(){
 
 	// functions for button and text box features
 	function addBtnListener(btn, txt) {
+		// hover listeners
 		btn.addEventListener("mouseover", function() {
 			txt.style.color = "rgba(255, 255, 255, 0.3)";
 			txt.style.textShadow = "0 0 0";
@@ -87,8 +91,26 @@ window.onload=function(){
 			txt.style.color = "#fff";
 			txt.style.textShadow = "0px 1px 5px rgba(0,0,0,0.2)";
 		});
+
+		// click to select text listener
 		btn.addEventListener("click", function() {
-			focusAtEnd(txt);
+			//focusAtEnd(txt);
+			if(document.selection) {
+				var range = document.body.createTextRange();
+				console.log(range);
+				range.moveToElementText(txt);
+				range.select();
+			} else if (window.getSelection) {
+				var range = document.createRange();
+				var sel = window.getSelection();
+				range.setStart(txt, 1);
+				range.collapse(true);
+				console.log(range);
+				sel.removeAllRanges();
+				sel.addRange(range);
+				range.select();
+			}
+			
 		});
 	}
 
@@ -145,6 +167,7 @@ window.onload=function(){
 			}
 		});
 	}
+
 
 	// the following few functions are to set listeners for 
 	// elements already in storage
@@ -207,6 +230,24 @@ window.onload=function(){
 		sel.removeAllRanges();
 		sel.addRange(range);
 		el.focus();
+		console.log(range);
+		console.log(sel);
+	}
+
+	function selectTxt(el) {
+	//fnDeSelect();
+	   if (document.selection) 
+	   {
+	      var range = document.body.createTextRange();
+	      range.moveToElementText(el);
+	      range.select();
+	   }
+	   else if (window.getSelection) 
+	   {
+	      var range = document.createRange();
+	      range.selectNode(el);
+	      window.getSelection().addRange(range);
+	   }
 	}
 
 	// set background

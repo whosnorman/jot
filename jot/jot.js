@@ -1,15 +1,15 @@
 window.onload=function(){
 	var storage = {};
-	var stor;
+	var stor = true;
 	var timer;
 	var lineNum = 0;
 	var divCont = document.getElementById("input");
 	var clearBtn = document.getElementById("clear");
 
-	//used for testing purposes
+	//used for testing 
 	/*storage = {
-		"0": ""
-		//"1": "#hexcode"
+		"0": "youtu.be/link",
+		"1": "#hexcode"
 	} 
 	localStorage.setItem('list', JSON.stringify(storage));
 	*/
@@ -18,13 +18,12 @@ window.onload=function(){
 	// find storage or set to nothing in order to render
 	if (localStorage && localStorage.getItem('list')) {
 		storage = JSON.parse(localStorage.getItem('list'));
-		 
 	}
 	else {
-		console.log("blah");
 		storage = {
-			"0": " "
+			"0": ""
 		}
+		stor = false;
 	}
 
 	// remove original div in html
@@ -33,22 +32,33 @@ window.onload=function(){
 
 	// loop through storage and render each line approriately
 	var length = Object.keys(storage).length; 
-	for(var i=0; i < length; i++) {
-
+	for(var i=0; i <= length; i++) {
 		var div = document.createElement("div");
 		div.setAttribute("id", lineNum);
-
 		var btn = createBtn(lineNum);
-
 		var txt = createTxt(lineNum);
-		txt.appendChild(document.createTextNode(storage[i]));
+
+		// create last line
+		if (i == length) {
+			if(stor) {
+				div.setAttribute("class", "last");
+				div.addEventListener("click", function(){
+					div.setAttribute("class", "");
+				});
+				txt.appendChild(document.createTextNode(""));
+			} else 
+				break;
+		} else {
+			txt.appendChild(document.createTextNode(storage[i]));
+		}
 
 		div.appendChild(btn);
 		div.appendChild(txt);
 		divCont.appendChild(div);
-
 		lineNum++;
 	}
+
+
 
 	// returns a left button element
 	function createBtn() {
@@ -94,23 +104,7 @@ window.onload=function(){
 
 		// click to select text listener
 		btn.addEventListener("click", function() {
-			//focusAtEnd(txt);
-			if(document.selection) {
-				var range = document.body.createTextRange();
-				console.log(range);
-				range.moveToElementText(txt);
-				range.select();
-			} else if (window.getSelection) {
-				var range = document.createRange();
-				var sel = window.getSelection();
-				range.setStart(txt, 1);
-				range.collapse(true);
-				console.log(range);
-				sel.removeAllRanges();
-				sel.addRange(range);
-				range.select();
-			}
-			
+			focusAtEnd(txt);
 		});
 	}
 
@@ -159,7 +153,26 @@ window.onload=function(){
 				if(text == '' || text == null){
 					e.preventDefault();
 					var arr = div.parentNode.getElementsByTagName('div');
-					focusAtEnd(arr[arr.length - 3]);
+					
+					// filter out only 'txt' div's
+					// can't use .filter on a nodeList
+					var txtArr = [];
+					var j = 0;
+					for(var i = 0; i <= arr.length - 1; i++) {
+						if (arr[i].className == 'txt') {
+							txtArr[j] = arr[i];
+							j++;
+						}
+					}
+
+					// find current row and focus on previous one
+					var lcv = 0;
+					while (txtArr[lcv].innerText != text) {
+						lcv++;
+					}
+					
+					focusAtEnd(txtArr[lcv - 1]);
+
 					div.parentNode.removeChild(div);
 					lineNum--;
 				}
@@ -230,12 +243,10 @@ window.onload=function(){
 		sel.removeAllRanges();
 		sel.addRange(range);
 		el.focus();
-		console.log(range);
-		console.log(sel);
 	}
 
+	// not working
 	function selectTxt(el) {
-	//fnDeSelect();
 	   if (document.selection) 
 	   {
 	      var range = document.body.createTextRange();
@@ -257,9 +268,7 @@ window.onload=function(){
 	// clear button
 	clearBtn.addEventListener("click", function(){
 		var arr = divCont.getElementsByTagName("div");
-		console.log(arr);
-		// lcv = 5
-		// 
+
 		for(var lcv = arr.length - 1; lcv >= 1; lcv-=2){
 			if(lcv === 1){
 				var txt = arr[lcv].innerHTML='';

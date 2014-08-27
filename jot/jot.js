@@ -262,7 +262,7 @@ window.onload=function(){
 	}
 
 	// set background
-	var n = Math.floor((Math.random() * 50) + 1);
+	var n = Math.floor((Math.random() * 45) + 1);
 	document.body.style.backgroundImage = "url('bg/"+n+".jpg')";
 
 	// clear button

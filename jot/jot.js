@@ -5,6 +5,7 @@ window.onload=function(){
 	var lineNum = 0;
 	var divCont = document.getElementById("input");
 	var clearBtn = document.getElementById("clear");
+	var jotBtn = document.getElementById("jBtn");
 
 	//used for testing 
 	/*storage = {
@@ -112,7 +113,7 @@ window.onload=function(){
 	function addTxtListener(el) {
 		el.addEventListener('keypress', function(e){
 			var key = e.which || e.keyCode;
-			// enter key code
+			// <enter> key code
 			if (key == 13) {
 				if (el.innerText != '') {
 					var div = document.createElement('div');
@@ -138,10 +139,10 @@ window.onload=function(){
 
 		});
 
-		// correcting function of the backspace key
+		// correcting functionality of the backspace key
 		el.addEventListener('keydown', function(e){
 			var key = e.which || e.keyCode;
-			// backspace key codes
+			// <backspace> key codes
 			if (key == 8 || key == 46) {
 				var div = el.parentNode;
 				var txt = div.getElementsByClassName('txt')[0];
@@ -200,7 +201,7 @@ window.onload=function(){
 	containerArray.forEach(setTxtListener);
 
 
-	// timer used so that storage isnt reset on every single keystroke
+	// timer used so that storage isnt reset on every keystroke
 	divCont.addEventListener("keyup", function(){
 		resetTimer();
 	}); 
@@ -281,4 +282,13 @@ window.onload=function(){
 		localStorage.removeItem('list');
 	});
 
+
+	jotBtn.addEventListener("click", function() {
+		var arr = divCont.getElementsByTagName("div");
+		var lastLine = arr[arr.length - 1];
+
+		lastLine.parentNode.setAttribute("class", "");
+		focusAtEnd(lastLine);
+
+	});
 }

@@ -28,7 +28,7 @@ body {
 	color: #fff; 
 	text-shadow: 0px 1px 5px rgba(0,0,0,0.2); 
 	height: 70%; 
-	padding: 0 0 0 15px;
+	padding: 0;
 	overflow: auto; 
 	margin: 3.5rem 0 0 0;
 }
@@ -59,15 +59,15 @@ body {
 	font-weight: 900; 
 	color: #fff; 
 	position: relative; 
-	max-width:500px;
-	margin-left: -50px;
+	max-width: 150px;
+	padding-left: 5px;
 }
 
 .header i {
 	font-size: 4rem;
 }
 
-.header i:hover {
+.header:hover {
 	color: #E6C2B3;
 	cursor: pointer;
 }

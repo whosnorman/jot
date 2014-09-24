@@ -105,7 +105,8 @@ window.onload=function(){
 
 		// click to select text listener
 		btn.addEventListener("click", function() {
-			focusAtEnd(txt);
+			//focusAtEnd(txt);
+			selectText(txt);
 		});
 	}
 
@@ -261,6 +262,27 @@ window.onload=function(){
 	      window.getSelection().addRange(range);
 	   }
 	}
+
+	// take two
+	function selectText(el) {
+		var doc = document, 
+		text = doc.getElementById(el), 
+		range, 
+		selection;    
+    if (doc.body.createTextRange) {
+        range = document.body.createTextRange();
+        range.moveToElementText(el);
+        range.select();
+    } else if (window.getSelection) {
+        selection = window.getSelection();        
+        range = document.createRange();
+        range.selectNodeContents(el);
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+	}
+
+
 
 	// set background
 	var n = Math.floor((Math.random() * 45) + 1);

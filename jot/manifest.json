@@ -1,12 +1,12 @@
 {
   "manifest_version": 2,
 
-  "name": "Jot",
+  "name": "Skosh",
   "description": "This extension replaces the new tab page for note taking.",
-  "version": "0.1",
+  "version": "0.2",
 
   "chrome_url_overrides": {
-    "newtab": "jot.html"
+    "newtab": "skosh.html"
   },
   "icons": {
   	"16": "icon16.png",

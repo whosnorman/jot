@@ -1,4 +1,14 @@
-window.onload=function(){
+/*
+Jot Chrome Extention
+
+Matt O'Hagan
+
+github.com/mattohagan/jot
+
+Background images from http://imgur.com/a/3Woti
+*/
+
+window.onload = function(){
 	var storage = {};
 	var stor = true;
 	var timer;
@@ -6,9 +16,10 @@ window.onload=function(){
 	var divCont = document.getElementById("input");
 	var clearBtn = document.getElementById("clear");
 	var jotBtn = document.getElementById("jBtn");
+	var appBtn = document.getElementById("appBtn");
 
 	//used for testing 
-	/*storage = {
+	/* storage = {
 		"0": "youtu.be/link",
 		"1": "#hexcode"
 	} 
@@ -140,7 +151,7 @@ window.onload=function(){
 
 		});
 
-		// correcting functionality of the backspace key
+		// setting functionality of the backspace key
 		el.addEventListener('keydown', function(e){
 			var key = e.which || e.keyCode;
 			// <backspace> key codes
@@ -247,55 +258,67 @@ window.onload=function(){
 		el.focus();
 	}
 
-	// not working
-	function selectTxt(el) {
-	   if (document.selection) 
-	   {
-	      var range = document.body.createTextRange();
-	      range.moveToElementText(el);
-	      range.select();
-	   }
-	   else if (window.getSelection) 
-	   {
-	      var range = document.createRange();
-	      range.selectNode(el);
-	      window.getSelection().addRange(range);
-	   }
-	}
-
-	// take two
+	// select text in an element
 	function selectText(el) {
-		var doc = document, 
-		text = doc.getElementById(el), 
-		range, 
-		selection;    
-    if (doc.body.createTextRange) {
-        range = document.body.createTextRange();
-        range.moveToElementText(el);
-        range.select();
-    } else if (window.getSelection) {
-        selection = window.getSelection();        
-        range = document.createRange();
-        range.selectNodeContents(el);
-        selection.removeAllRanges();
-        selection.addRange(range);
-    }
+		var range,
+			selection;
+	    if (document.body.createTextRange) {
+	        range = document.body.createTextRange();
+	        range.moveToElementText(el);
+	        range.select();
+	    } else if (window.getSelection) {
+	        selection = window.getSelection();        
+	        range = document.createRange();
+	        range.selectNodeContents(el);
+	        selection.removeAllRanges();
+	        selection.addRange(range);
+	    }
 	}
-
-
 
 	// set background
 	var n = Math.floor((Math.random() * 45) + 1);
 	document.body.style.backgroundImage = "url('bg/"+n+".jpg')";
 
+	appBtn.addEventListener("click", function(){
+		chrome.tabs.update({
+            url:'chrome://apps'
+        });
+	});
+
 	// clear button
+	clearBtn.addEventListener("mouseover", function(){
+		var rand = Math.floor((Math.random() * 4) + 1);
+		console.log(rand);
+
+		switch(rand){
+			case 1:
+				clearBtn.innerHTML = "Positive?";
+				break;
+			case 2:
+				clearBtn.innerHTML = "Everything?";
+				break;
+			case 3:
+				clearBtn.innerHTML = "You Sure?";
+				break;
+			default:
+				clearBtn.innerHTML = "Don't do it";
+				break;
+
+		}
+	});
+
+	clearBtn.addEventListener("mouseout", function(){
+		clearBtn.innerHTML = "Clear";
+	});
+
 	clearBtn.addEventListener("click", function(){
 		var arr = divCont.getElementsByTagName("div");
 
 		for(var lcv = arr.length - 1; lcv >= 1; lcv-=2){
-			if(lcv === 1){
+			// completely clear html 
+			if(lcv === 1)
 				var txt = arr[lcv].innerHTML='';
-			}
+			// only clear text on the first line
 			else
 				arr[lcv - 1].parentNode.removeChild(arr[lcv - 1]);
 		}
@@ -304,7 +327,7 @@ window.onload=function(){
 		localStorage.removeItem('list');
 	});
 
-
+	// top left Jot button
 	jotBtn.addEventListener("click", function() {
 		var arr = divCont.getElementsByTagName("div");
 		var lastLine = arr[arr.length - 1];

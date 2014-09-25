@@ -154,8 +154,8 @@ window.onload = function(){
 		// setting functionality of the backspace key
 		el.addEventListener('keydown', function(e){
 			var key = e.which || e.keyCode;
-			// <backspace> key codes
-			if (key == 8 || key == 46) {
+			// <backspace> key code
+			if (key == 8) {
 				var div = el.parentNode;
 				var txt = div.getElementsByClassName('txt')[0];
 				var btn = div.getElementsByClassName('left icon-right-open-big')[0];
@@ -287,7 +287,7 @@ window.onload = function(){
 
 	// clear button
 	clearBtn.addEventListener("mouseover", function(){
-		var rand = Math.floor((Math.random() * 4) + 1);
+		var rand = Math.floor((Math.random() * 5) + 1);
 		console.log(rand);
 
 		switch(rand){
@@ -300,10 +300,12 @@ window.onload = function(){
 			case 3:
 				clearBtn.innerHTML = "You Sure?";
 				break;
+			case 4:
+				clearBtn.innerHTML = "AHHHHHH";
+				break;
 			default:
 				clearBtn.innerHTML = "Don't do it";
 				break;
-
 		}
 	});
 

@@ -1,4 +1,4 @@
-Skosh
+Jot
 ===
 Quick note taking chrome extension to replace the new tab page.
 

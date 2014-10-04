@@ -1,3 +1,17 @@
+@font-face {
+  font-family: 'Lato';
+  src: url('../font/lato/Lato-Hairline.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('../font/lato/Lato-Heavy.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
 html { 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -5,8 +19,7 @@ html {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  /*-webkit-filter: blur(2px);*/
-
+  -webkit-font-smoothing: antialiased !important;
 }
 
 body {
@@ -18,9 +31,11 @@ body {
 	border: 12px solid #fff;
 
 }
+
 .fontello {
 	font-family: fontello;
 }
+
 .input { 
 	font-family: 'Lato', sans-serif; 
 	font-weight: 100; 
@@ -46,6 +61,8 @@ body {
 .input .txt {
 	margin-left: 70px;
 	outline: none;
+	spellcheck: false;
+	autocorrect: "off";
 }
 
 .input i {
@@ -56,7 +73,7 @@ body {
 .apps {
 	font-family: 'Lato', sans-serif; 
 	font-size: 1rem; 
-	font-weight: 700; 
+	font-weight: 900; 
 	color: #fff; 
 	position: absolute; 
 	top: 40px;
@@ -102,7 +119,7 @@ body {
 	font-family: 'Lato', sans-serif; 
 	font-size: 3rem; 
 	font-weight: 900; 
-	padding:0px 10px 0px 10px;
+	padding: 4px 10px 0px 10px;
 }
 
 .button:hover {

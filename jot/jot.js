@@ -1,5 +1,5 @@
 /*
-Jot Chrome Extention
+Jot Chrome Extension
 
 Matt O'Hagan
 

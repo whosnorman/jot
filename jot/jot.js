@@ -135,7 +135,9 @@ window.onload = function(){
 					div.appendChild(btn);
 					div.appendChild(txt);
 
-					var newDiv = el.parentNode.appendChild(div);
+                    // add the new line after the current
+                    var currentLine = el.parentNode;
+					var newDiv = currentLine.parentNode.insertBefore(div, currentLine.nextSibling);
 					var newTxt = newDiv.getElementsByClassName('txt')[0];
 					var newBtn = newDiv.getElementsByClassName('left icon-right-open-big')[0];
 					addBtnListener(newBtn, newTxt);

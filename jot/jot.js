@@ -278,7 +278,8 @@ window.onload = function(){
 	}
 
 	// set background
-	var n = Math.floor((Math.random() * 45) + 1);
+	var numOfBackgrounds = 52;
+	var n = Math.floor((Math.random() * numOfBackgrounds) + 1);
 	document.body.style.backgroundImage = "url('bg/"+n+".jpg')";
 
 	appBtn.addEventListener("click", function(){

@@ -12,24 +12,23 @@
   font-style: normal;
 }
 
-html { 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+html {
   -webkit-font-smoothing: antialiased !important;
 }
 
 body {
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	margin: 12px;
 	border: 12px solid #fff;
-
 }
 
 .fontello {

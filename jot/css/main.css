@@ -12,24 +12,32 @@
   font-style: normal;
 }
 
-html { 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  -webkit-font-smoothing: antialiased !important;
+body {
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-font-smoothing: antialiased !important;
+    margin: 0;
 }
 
-body {
+.borderCont{
+	width: 100%;
+	height: 100%;
+	transition: all 500ms ease;
+}
+
+.container {
 	top: 0;
 	left: 0;
-	right: 0;
-	bottom: 0;
-	margin: 12px;
-	border: 12px solid #fff;
+	color: rgba(255, 255, 255, 1);
+	transition: all 500ms ease;
+}
 
+.border {
+	border: 12px solid #fff;
 }
 
 .fontello {
@@ -40,12 +48,12 @@ body {
 	font-family: 'Lato', sans-serif; 
 	font-weight: 100; 
 	outline: none; 
-	color: #fff; 
 	text-shadow: 0px 1px 5px rgba(0,0,0,0.2); 
 	height: 70%; 
 	padding: 0;
 	overflow: auto; 
 	margin: 3.5rem 0 0 0;
+	transition: all 200ms ease-out;
 }
 
 .input .left {
@@ -67,14 +75,19 @@ body {
 
 .input i {
 	text-shadow: none;
-	font-size: 3rem;
+	font-size: 3rem;	
+}
+
+.txtHover {
+	color: rgba(255, 255, 255, 0.3);
+	textShadow: 0 0 0;
+	color: #E6C2B3;
 }
 
 .apps {
 	font-family: 'Lato', sans-serif; 
 	font-size: 1rem; 
 	font-weight: 900; 
-	color: #fff; 
 	position: absolute; 
 	top: 40px;
 	left: 40px;
@@ -94,7 +107,6 @@ body {
 	font-family: 'Lato', sans-serif; 
 	font-size: 5rem; 
 	font-weight: 900; 
-	color: #fff; 
 	position: relative; 
 	max-width: 150px;
 	padding-left: 5px;
@@ -104,7 +116,7 @@ body {
 	font-size: 4rem;
 }
 
-.header:hover {
+.header span:hover {
 	color: #E6C2B3;
 	cursor: pointer;
 }
@@ -115,7 +127,6 @@ body {
 	background: none;
 	border: 5px solid #fff; 
 	margin-top: 20px;
-	color: #fff;
 	font-family: 'Lato', sans-serif; 
 	font-size: 3rem; 
 	font-weight: 900; 
@@ -136,10 +147,18 @@ body {
 	padding: 2rem 2rem 0 2rem;
 }
 
-.container {
+.overlay {
 	width:100%;
 	height:100%;
 	background-color:rgba(0,0,0,0.4);
+}
+
+.faded {
+	color: rgba(255, 255, 255, 0.2);
+}
+
+.faded:hover {
+	color: rgba(255, 255, 255, 1);
 }
 
 .last {

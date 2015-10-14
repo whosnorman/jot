@@ -11,11 +11,14 @@ Background images from http://imgur.com/a/3Woti
 window.onload = function(){
 	var storage = {};
 	var stor = true;
+	var hasBorder = false;
 	var timer;
 	var lineNum = 0;
 	var divCont = document.getElementById("input");
 	var clearBtn = document.getElementById("clear");
-	var jotBtn = document.getElementById("jBtn");
+	var jBtn = document.getElementById("jBtn");
+	var oBtn = document.getElementById("oBtn");
+	var tBtn = document.getElementById("tBtn");
 	var appBtn = document.getElementById("appBtn");
 
 	//used for testing 
@@ -105,13 +108,10 @@ window.onload = function(){
 	function addBtnListener(btn, txt) {
 		// hover listeners
 		btn.addEventListener("mouseover", function() {
-			txt.style.color = "rgba(255, 255, 255, 0.3)";
-			txt.style.textShadow = "0 0 0";
-
+			$(txt).addClass('txtHover');
 		});
 		btn.addEventListener("mouseout", function() {
-			txt.style.color = "#fff";
-			txt.style.textShadow = "0px 1px 5px rgba(0,0,0,0.2)";
+			$(txt).removeClass('txtHover');
 		});
 
 		// click to select text listener
@@ -329,13 +329,36 @@ window.onload = function(){
 		localStorage.removeItem('list');
 	});
 
-	// top left Jot button
-	jotBtn.addEventListener("click", function() {
+	// top left J button
+	jBtn.addEventListener("click", function() {
 		var arr = divCont.getElementsByTagName("div");
 		var lastLine = arr[arr.length - 1];
 
 		lastLine.parentNode.setAttribute("class", "");
 		focusAtEnd(lastLine);
-
 	});
+
+	// top left O button
+	oBtn.addEventListener('click', function(){
+		$('#input').toggleClass('faded');
+	});
+
+	// top left t button
+	tBtn.addEventListener('click', function(){
+		var cont =  $('.borderCont');
+		var diff = 23;
+
+		if(hasBorder){
+			hasBorder = false;
+			cont.removeClass('border');
+			var height = $('.container').height();
+			cont.height(height - diff);
+		} else {
+			hasBorder = true;
+			cont.addClass('border');
+			var height = $('.container').height();
+			cont.height(height + diff);
+		}
+	});
+
 }

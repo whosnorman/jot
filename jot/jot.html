@@ -3,20 +3,26 @@
 	<!-- <link href='http://fonts.googleapis.com/css?family=Lato:100,400,700,900' rel='stylesheet' type='text/css'> -->
 	<link href='css/main.css' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/fontello.css">
+	<script type='text/javascript' src='jquery-2.1.1.min.js'></script>
 	<script type='text/javascript' src='jot.js'> </script>
 </head>
 <body>
 	<div class="container">
-		<div class="inner">
-			<div style="margin: 0 0 1rem 1rem;">
-				<div class="button" id="clear">Clear</div>
-				<div class="header" id="jBtn"><!--i class="icon-paper-plane"></i --> Jot</div>
-				<div class="apps" id="appBtn">Apps</div>
-			</div>
-			<div class='input' id='input'>
-				<div>
-					<i class='left icon-right-open-big' id='left'></i>
-					<div contenteditable id='txt' title=":]">http://hackfsu.com</div>
+		<div class='borderCont'>
+			<div class="overlay">
+				<div class="inner">
+					<div style="margin: 0 0 1rem 1rem;">
+						<div class="button" id="clear">Clear</div>
+						<div class="header"><span id="jBtn">J</span><span id='oBtn'>o</span><span id='tBtn'>t</span></div>
+						<!--i class="icon-paper-plane"></i --> 
+						<div class="apps" id="appBtn">Apps</div>
+					</div>
+					<div class='input' id='input'>
+						<div>
+							<i class='left icon-right-open-big' id='left'></i>
+							<div contenteditable id='txt' title=":]">http://hackfsu.com</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -42,4 +42,4 @@ Creating a todo list is no fun. It's hard to remind yourself to use one and it's
 1. Fork the repo and ```git clone``` to your local machine
 1. Setup your dev environment by selecting **Load unpacked extension** from the Chrome Extension page (available at chrome://extensions) and choosing your local fork's ```jot``` folder within the ```jot``` project repo.
 1. Edit and push commits to your local fork.
-1. Open a Pull Request with a descriptive comments and screenshots or gifs for your new feature when complete. (screenshots not necessary if you're solely adding new photos.
+1. Open a Pull Request with a descriptive expanation and screenshots or gifs for your new feature. (screenshots not necessary if you're solely adding new photos.)

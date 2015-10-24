@@ -12,6 +12,48 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../font/OpenSans-Light.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../font/OpenSans-Regular.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../font/OpenSans-Semibold.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../font/OpenSans-Bold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../font/OpenSans-ExtraBold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('../font/Avenir-Light.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
 
 .borderCont{
 	width: 100%;
@@ -49,10 +91,9 @@ body {
 }
 
 .input { 
-	font-family: 'Lato', sans-serif; 
+	font-family: 'Avenir', sans-serif; 
 	font-weight: 100; 
-	outline: none; 
-	text-shadow: 0px 1px 5px rgba(0,0,0,0.2); 
+	outline: none;
 	height: 70%; 
 	padding: 0;
 	overflow: auto; 
@@ -63,7 +104,7 @@ body {
 .input .left {
 	float: left;
 	cursor: pointer;
-	margin-top: 1.3rem;
+	margin-top: 0.7rem;
 }
 
 .input .left:hover {
@@ -72,6 +113,7 @@ body {
 
 .input .txt {
 	margin-left: 70px;
+	margin-bottom: 25px;
 	outline: none;
 	spellcheck: false;
 	autocorrect: "off";
@@ -79,7 +121,7 @@ body {
 
 .input i {
 	text-shadow: none;
-	font-size: 3rem;	
+	font-size: 2.5rem;	
 }
 
 .txtHover {
@@ -134,7 +176,7 @@ body {
 	font-family: 'Lato', sans-serif; 
 	font-size: 3rem; 
 	font-weight: 900; 
-	padding: 4px 10px 0px 10px;
+	padding: 0px 10px 0px 10px;
 }
 
 .button:hover {
@@ -144,7 +186,7 @@ body {
 }
 
 .inner {
-	font-size: 4rem;
+	font-size: 3rem;
 	line-height: 1.3;
 	max-width: 62rem;
 	margin: 0 auto;
@@ -154,7 +196,7 @@ body {
 .overlay {
 	width:100%;
 	height:100%;
-	background-color:rgba(0,0,0,0.4);
+	background-color:rgba(30, 30, 30, 0.95);
 	left: 0;
 	right: 0;
 	top: 0;
@@ -162,7 +204,7 @@ body {
 }
 
 .faded {
-	color: rgba(255, 255, 255, 0.2);
+	color: rgba(255, 255, 255, 0.03);
 }
 
 .faded:hover {

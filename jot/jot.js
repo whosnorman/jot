@@ -121,14 +121,22 @@ window.onload = function(){
 		});
 	}
 
-	// creates a new line when enter is hit
+	// sets event listeners for when focus is lost to delete if empty,
+	// to create a new line when <enter> is hit,
+	// and to delete current line on <backspace> when empty
 	function addTxtListener(el) {
+		// when a line loses focus, if it's empty then delete it
         $(el).on('focusout', function(e){
-            console.log('focusout ')
             var text = e.target.innerText;
             if (isEmpty(text)) {
+            	console.log(text);
                 var emptyRow = e.target.parentNode;
-                if (emptyRow.parentNode && !emptyRow.classList.contains('last')) {
+                var lastLine = arr[arr.length - 1];
+
+                // turn last line back into hoverable empty line
+                if(emptyRow.id == lastLine.id){
+                	lastLine.parentNode.setAttribute("class", "last");
+                } else if (emptyRow.parentNode) {
                     emptyRow.parentNode.removeChild(emptyRow);
                     lineNum--;
                 }
@@ -222,6 +230,7 @@ window.onload = function(){
 		addTxtListener(txt);
 	}
 
+	// set listeners
 	containerArray.forEach(setBtnListener);
 	containerArray.forEach(setTxtListener);
 

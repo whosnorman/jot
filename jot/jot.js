@@ -123,6 +123,19 @@ window.onload = function(){
 
 	// creates a new line when enter is hit
 	function addTxtListener(el) {
+        $(el).on('focusout', function(e){
+            console.log('focusout ')
+            var text = e.target.innerText;
+            if (isEmpty(text)) {
+                var emptyRow = e.target.parentNode;
+                if (emptyRow.parentNode && !emptyRow.classList.contains('last')) {
+                    emptyRow.parentNode.removeChild(emptyRow);
+                    lineNum--;
+                }
+            }
+        });
+
+
 		el.addEventListener('keypress', function(e){
 			var key = e.which || e.keyCode;
 			// <enter> key code
@@ -146,7 +159,8 @@ window.onload = function(){
 					newTxt.focus();
 					e.preventDefault();
 					lineNum++
-				} else {
+
+    				} else {
 					e.preventDefault();
 				}
 			} 
@@ -187,9 +201,6 @@ window.onload = function(){
 					}
 					
 					focusAtEnd(txtArr[lcv - 1]);
-
-					div.parentNode.removeChild(div);
-					lineNum--;
 				}
 
 			}
@@ -220,6 +231,11 @@ window.onload = function(){
 		resetTimer();
 	}); 
 
+    // check if text is empty
+    function isEmpty(text) {
+        return text == null || text == '\n' || text == '' || text == ' ';
+    }
+
 	// clear & reset storage set timer
 	function resetTimer(){
 		clearTimeout(timer);
@@ -240,7 +256,7 @@ window.onload = function(){
 		storage = {};
 		for(var i=0, j=0; i < newArray.length; i++) {
 			var text = newArray[i].innerText;
-			if (text != "\n" && text != '' && text != ' '){
+			if (!isEmpty(text)){
 				storage[j] = text;
 				j++;
 			}

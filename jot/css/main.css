@@ -12,16 +12,6 @@
   font-style: normal;
 }
 
-body {
-	-webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    -webkit-font-smoothing: antialiased !important;
-    margin: 0;
-}
 
 .borderCont{
 	width: 100%;
@@ -36,8 +26,22 @@ body {
 	transition: all 500ms ease;
 }
 
-.border {
-	border: 12px solid #fff;
+html {
+  -webkit-font-smoothing: antialiased !important;
+}
+
+body {
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: 0;
 }
 
 .fontello {
@@ -151,6 +155,10 @@ body {
 	width:100%;
 	height:100%;
 	background-color:rgba(0,0,0,0.4);
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
 }
 
 .faded {

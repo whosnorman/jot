@@ -79,7 +79,7 @@ window.onload = function(){
 	function createBtn() {
 		var btn = document.createElement("i");
 		btn.setAttribute("id", "left");
-		btn.setAttribute("class", "left icon-right-open-big");
+		btn.setAttribute("class", "left icon-right-open-big listBullet");
 
 		return btn;
 	}
@@ -307,12 +307,6 @@ window.onload = function(){
 	var n = Math.floor((Math.random() * numOfBackgrounds) + 1);
 	document.body.style.backgroundImage = "url('bg/"+n+".jpg')";
 
-	appBtn.addEventListener("click", function(){
-		chrome.tabs.update({
-            url:'chrome://apps'
-        });
-	});
-
 	// clear button
 	clearBtn.addEventListener("mouseover", function(){
 		var rand = Math.floor((Math.random() * 5) + 1);
@@ -389,4 +383,71 @@ window.onload = function(){
 		}
 	});
 
+	// Settings button
+	// Get the modal
+	var modal = document.getElementById('myModal');
+
+	// Get the button that opens the modal
+	var btn = document.getElementById("settingsBtn");
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+
+	// When the user clicks on the button, open the modal 
+	btn.onclick = function() {
+	    modal.style.display = "block";
+	}
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	    modal.style.display = "none";
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	    if (event.target == modal) {
+	        modal.style.display = "none";
+	    }
+	}
+
+	// Font size options
+	var fontDecrease = document.getElementById('fontDecrease');
+	var fontIncrease = document.getElementById('fontIncrease');
+	var fontSizeInput = document.getElementById('fontSizeInput');
+
+	// Set initial font size
+	var textInput = document.getElementsByClassName("inner")[0];
+	fontSizeInput.value = textInput.style.fontSize;
+
+	fontDecrease.addEventListener('click', function() {
+		fontSizeInput.value = parseFloat(fontSizeInput.value) - 1;
+		updateFontSize();
+		console.log("Decreasing...");
+		console.log(fontSizeInput.value);
+	});
+
+	fontIncrease.addEventListener('click', function() {
+		fontSizeInput.value = parseFloat(fontSizeInput.value) + 1;
+		updateFontSize();
+		console.log("Increasing...");
+		console.log(fontSizeInput.value);
+	});
+
+	fontSizeInput.addEventListener('input', function() {
+		updateFontSize();
+	});
+
+	function updateFontSize() {
+		console.log("Changing...");
+		console.log(fontSizeInput.value);
+
+		var textInput = document.getElementsByClassName("inner")[0];
+		textInput.style.fontSize = fontSizeInput.value;
+
+		var index;
+		var listBullets = document.getElementsByClassName("listBullet");
+		for (index = 0; index < listBullets.length; ++index) {
+		    listBullets[index].style.fontSize = fontSizeInput.value;
+		}
+	}
 }

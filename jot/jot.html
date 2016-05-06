@@ -3,6 +3,7 @@
 	<!-- <link href='http://fonts.googleapis.com/css?family=Lato:100,400,700,900' rel='stylesheet' type='text/css'> -->
 	<link href='css/main.css' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/fontello.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<script type='text/javascript' src='jquery-2.1.1.min.js'></script>
 	<script type='text/javascript' src='jot.js'> </script>
 </head>
@@ -15,12 +16,27 @@
 						<div class="button" id="clear">Clear</div>
 						<div class="header"><span id="jBtn">J</span><span id='oBtn'>o</span><span id='tBtn'>t</span></div>
 						<!--i class="icon-paper-plane"></i --> 
-						<div class="apps" id="appBtn">Apps</div>
+						<div class="apps" id="appBtn">
+							<div id="settingsBtn"><i class="fa fa-cog" aria-hidden="true"></i></div>
+						</div>
 					</div>
 					<div class='input' id='input'>
 						<div>
 							<i class='left icon-right-open-big' id='left'></i>
 							<!-- <div contenteditable id='txt'></div> -->
+						</div>
+					</div>
+					<div id="myModal" class="modal">
+						<div class="modal-content">
+							<span class="close">x</span>
+							<h2>Settings</h2>
+							<div class="fontSizeSetting">
+								<p>Font Size:
+									<i class="fa fa-minus-circle" id="fontDecrease" aria-hidden="true"></i>
+									<input id="fontSizeInput" id="fontSizeInput" type="text" />px
+									<i class="fa fa-plus-circle" id="fontIncrease" aria-hidden="true"></i>
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>

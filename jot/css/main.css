@@ -1,57 +1,57 @@
 @font-face {
-  font-family: 'Lato';
-  src: url('../font/lato/Lato-Hairline.ttf') format('truetype');
-  font-weight: 100;
-  font-style: normal;
+	font-family: 'Lato';
+	src: url('../font/lato/Lato-Hairline.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: 'Lato';
-  src: url('../font/lato/Lato-Heavy.ttf') format('truetype');
-  font-weight: 900;
-  font-style: normal;
+	font-family: 'Lato';
+	src: url('../font/lato/Lato-Heavy.ttf') format('truetype');
+	font-weight: 900;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: 'Open Sans';
-  src: url('../font/OpenSans-Light.ttf') format('truetype');
-  font-weight: 100;
-  font-style: normal;
+	font-family: 'Open Sans';
+	src: url('../font/OpenSans-Light.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: 'Open Sans';
-  src: url('../font/OpenSans-Regular.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
+	font-family: 'Open Sans';
+	src: url('../font/OpenSans-Regular.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: 'Open Sans';
-  src: url('../font/OpenSans-Semibold.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
+	font-family: 'Open Sans';
+	src: url('../font/OpenSans-Semibold.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: 'Open Sans';
-  src: url('../font/OpenSans-Bold.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
+	font-family: 'Open Sans';
+	src: url('../font/OpenSans-Bold.ttf') format('truetype');
+	font-weight: 600;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: 'Open Sans';
-  src: url('../font/OpenSans-ExtraBold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
+	font-family: 'Open Sans';
+	src: url('../font/OpenSans-ExtraBold.ttf') format('truetype');
+	font-weight: 700;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: 'Avenir';
-  src: url('../font/Avenir-Light.ttf') format('truetype');
-  font-weight: 100;
-  font-style: normal;
+	font-family: 'Avenir';
+	src: url('../font/Avenir-Light.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
 }
 
 
@@ -69,7 +69,7 @@
 }
 
 html {
-  -webkit-font-smoothing: antialiased !important;
+	-webkit-font-smoothing: antialiased !important;
 }
 
 body {
@@ -220,17 +220,17 @@ body {
 }
 
 ::-webkit-scrollbar {
-    width: 12px;
+		width: 12px;
 }
  
 ::-webkit-scrollbar-track {
-    background-color: rgba(255, 255, 255, 0.1); 
-    border-radius: 0px;
+		background-color: rgba(255, 255, 255, 0.1); 
+		border-radius: 0px;
 }
  
 ::-webkit-scrollbar-thumb {
-    border-radius: 0px;
-    background-color: #fff;
+		border-radius: 0px;
+		background-color: #fff;
 }
 
 ::selection {
@@ -238,4 +238,57 @@ body {
 }
 ::-moz-selection {
 	background: #E6C2B3;
+}
+
+/* The Modal (background) */
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+	background-color: #fefefe;
+	margin: 15% auto; /* 15% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 40%; /* Could be more or less, depending on screen size */
+	color: #333;
+	font-size: 26px;
+}
+
+.modal-content input{
+	font-size: 26px;
+	width: 50px;
+}
+
+/* The Close Button */
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#fontDecrease {
+	cursor: pointer;
+}
+
+#fontIncrease {
+	cursor: pointer;
 }

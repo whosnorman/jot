@@ -45,13 +45,11 @@ window.onload = function(){
 	var fontSizeInput = document.getElementById('fontSizeInput');
 	if (localStorage && localStorage.getItem('jotFontSize')) {
 		fontSizeInput.value = localStorage.getItem('jotFontSize');
-		updateFontSize();
 	} else {
 		var textInput = document.getElementsByClassName("inner")[0];
 		var style = window.getComputedStyle(textInput, null).getPropertyValue('font-size');
 		var fontSize = parseFloat(style); 
 		fontSizeInput.value = fontSize;
-		updateFontSize();
 	}
 
 	// remove original div in html
@@ -86,7 +84,7 @@ window.onload = function(){
 		lineNum++;
 	}
 
-
+	updateFontSize();
 
 	// returns a left button element
 	function createBtn() {
@@ -462,7 +460,9 @@ window.onload = function(){
 
 		var index;
 		var listBullets = document.getElementsByClassName("listBullet");
+		console.log(listBullets);
 		for (index = 0; index < listBullets.length; ++index) {
+			console.log('Hello?');
 			listBullets[index].style.fontSize = fontSizeInput.value;
 		}
 	}

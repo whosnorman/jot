@@ -41,6 +41,19 @@ window.onload = function(){
 		stor = false;
 	}
 
+	// Fetch font size from local storage
+	var fontSizeInput = document.getElementById('fontSizeInput');
+	if (localStorage && localStorage.getItem('jotFontSize')) {
+		fontSizeInput.value = localStorage.getItem('jotFontSize');
+		updateFontSize();
+	} else {
+		var textInput = document.getElementsByClassName("inner")[0];
+		var style = window.getComputedStyle(textInput, null).getPropertyValue('font-size');
+		var fontSize = parseFloat(style); 
+		fontSizeInput.value = fontSize;
+		updateFontSize();
+	}
+
 	// remove original div in html
 	var arr = divCont.getElementsByTagName("div");
 	arr[0].parentNode.removeChild(arr[0]);
@@ -413,11 +426,12 @@ window.onload = function(){
 	// Font size options
 	var fontDecrease = document.getElementById('fontDecrease');
 	var fontIncrease = document.getElementById('fontIncrease');
-	var fontSizeInput = document.getElementById('fontSizeInput');
 
 	// Set initial font size
 	var textInput = document.getElementsByClassName("inner")[0];
-	fontSizeInput.value = textInput.style.fontSize;
+	var style = window.getComputedStyle(textInput, null).getPropertyValue('font-size');
+	var fontSize = parseFloat(style); 
+	fontSizeInput.value = fontSize;
 
 	fontDecrease.addEventListener('click', function() {
 		fontSizeInput.value = parseFloat(fontSizeInput.value) - 1;
@@ -441,13 +455,15 @@ window.onload = function(){
 		console.log("Changing...");
 		console.log(fontSizeInput.value);
 
+		localStorage.setItem('jotFontSize', fontSizeInput.value);
+
 		var textInput = document.getElementsByClassName("inner")[0];
 		textInput.style.fontSize = fontSizeInput.value;
 
 		var index;
 		var listBullets = document.getElementsByClassName("listBullet");
 		for (index = 0; index < listBullets.length; ++index) {
-		    listBullets[index].style.fontSize = fontSizeInput.value;
+			listBullets[index].style.fontSize = fontSizeInput.value;
 		}
 	}
 }

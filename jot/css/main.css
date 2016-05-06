@@ -104,7 +104,7 @@ body {
 .input .left {
 	float: left;
 	cursor: pointer;
-	margin-top: 0.7rem;
+	margin-top: 0.3rem;
 }
 
 .input .left:hover {
